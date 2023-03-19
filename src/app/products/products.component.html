@@ -1,0 +1,388 @@
+<h1 class="main">Manage Products</h1>
+
+<div class="mt-20">
+    <div class="text-center">
+       
+        <button type="button" class="py-4 px-6 w-fit bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full" routerLink="/addproducts">
+            Add Products
+        </button>
+        <!-- <h1>All Products</h1> -->
+    </div>
+
+
+
+    <div class="container mx-auto px-4 sm:px-8 max-w-full">
+        <div class="py-8">
+            <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+                <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+                    <h1>All Products</h1>
+                    <table class="min-w-full leading-normal" *ngIf="main_table" >
+                        
+                        <thead >
+                            <tr>
+                                <th scope="col"
+                                    class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                                    Id
+                                </th>
+                                <th scope="col"
+                                    class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                                    Name
+                                </th>
+                                <th scope="col"
+                                    class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                                    Price
+                                </th>
+                                <th scope="col"
+                                    class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                                    Stock
+                                </th>
+                                <th scope="col"
+                                    class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                                    Category
+                                </th>
+                                <th scope="col"
+                                    class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                                    Description
+                                </th>
+                                <th scope="col"
+                                    class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                                    Image
+                                </th>
+                                <th scope="col"
+                                    class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+
+                                </th>
+                                <th scope="col"
+                                    class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let i of data" >
+                            <tr>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <div class="flex items-center">
+                                        <div class="flex-shrink-0">
+                                            {{i.product_Id}}
+                                        </div>
+
+                                    </div>
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm" >
+                                    <p class="text-gray-900 whitespace-no-wrap">
+                                        {{i.product_Name}}
+                                    </p>
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <p class="text-gray-900 whitespace-no-wrap">
+                                        {{i.product_Price}}
+                                    </p>
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <span
+                                        class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                                        <span aria-hidden="true"
+                                            class="absolute inset-0 bg-green-200 opacity-50 rounded-full">
+                                        </span>
+                                        <span class="relative">
+                                            {{i.product_Stock}}
+                                        </span>
+                                    </span>
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    {{i.product_Category}}
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    {{i.product_Description}}
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    {{i.product_Image}}
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+
+                                    <a (click)="Edit(i.product_Id,i.product_Name,i.product_Price,i.product_Stock,i.product_Category,i.product_Description,i.product_Image)"  class="text-indigo-600 hover:text-indigo-900">
+
+                                        <button type="button" 
+                                            class="py-2 px-4  bg-green-500 hover:bg-green-700 focus:ring-pink-500 focus:ring-offset-pink-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full">
+                                            Edit
+                                        </button>
+
+                                    </a>
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <a (click)="Delete(i.product_Id)" class="text-indigo-600 hover:text-indigo-900">
+
+                                        <button type="button"
+                                            class="py-2 px-4  bg-red-500 hover:bg-red-700 focus:ring-pink-500 focus:ring-offset-pink-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full">
+                                            Delete
+                                        </button>
+
+                                    </a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                   <!-- Update Table Start -->
+
+
+
+                   <table class="min-w-full leading-normal" *ngIf="update_table">
+                        
+                    <thead>
+                        <tr>
+                            <th scope="col"
+                                class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                                Id
+                            </th>
+                            <th scope="col"
+                                class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                                Name
+                            </th>
+                            <th scope="col"
+                                class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                                Price
+                            </th>
+                            <th scope="col"
+                                class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                                Stock
+                            </th>
+                            <th scope="col"
+                                class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                                Category
+                            </th>
+                            <th scope="col"
+                                class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                                Description
+                            </th>
+                            <th scope="col"
+                                class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                                Image
+                            </th>
+                            <th scope="col"
+                                class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+
+                            </th>
+                            <th scope="col"
+                                class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let i of data">
+                        <tr>
+                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0">
+                                        {{i.product_Id}}
+                                    </div>
+
+                                </div>
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm ">
+                                <p class="text-gray-900 whitespace-no-wrap">
+                                    
+                                    <!-- name start  -->
+
+                                    <input type="text" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" [(ngModel)]="update_name" />
+
+
+
+                                    <!-- name end -->
+
+
+
+                                </p>
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm ">
+                                <p class="text-gray-900 whitespace-no-wrap">
+                                    
+                                    <input type="text" class="w-full" [(ngModel)]="update_price">
+                                </p>
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <span
+                                    class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                                    <span aria-hidden="true"
+                                        class="absolute inset-0 bg-green-200 opacity-50 rounded-full">
+                                    </span>
+                                    <span class="relative">
+                                        <input type="text" class="w-full" [(ngModel)]="update_stock">
+                                    </span>
+                                </span>
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <input type="text" class="w-full" [(ngModel)]="update_category">
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <input type="text" class="w-full" [(ngModel)]="update_description">
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <input type="text" class="w-full" [(ngModel)]="update_image">
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+
+                                <a (click)="Update(i.product_Id)"  class="text-indigo-600 hover:text-indigo-900">
+
+                                    <button type="button" 
+                                        class="py-2 px-4  bg-green-500 hover:bg-green-700 focus:ring-pink-500 focus:ring-offset-pink-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full">
+                                        Update
+                                    </button>
+
+                                </a>
+                            </td>
+                            <!-- <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <a href="#" class="text-indigo-600 hover:text-indigo-900">
+
+                                    <button type="button"
+                                        class="py-2 px-4  bg-red-500 hover:bg-red-700 focus:ring-pink-500 focus:ring-offset-pink-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full">
+                                        Delete
+                                    </button>
+
+                                </a>
+                            </td> -->
+                        </tr>
+
+                    </tbody>
+                </table>
+
+
+                   <!-- Update Table End -->
+                    
+
+
+
+
+
+                    <div class="px-5 bg-white py-5 flex flex-col xs:flex-row items-center xs:justify-between">
+                        <div class="flex items-center">
+                            <button type="button"
+                                class="w-full p-4 border text-base rounded-l-xl text-gray-600 bg-white hover:bg-gray-100">
+                                <svg width="9" fill="currentColor" height="8" class="" viewBox="0 0 1792 1792"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M1427 301l-531 531 531 531q19 19 19 45t-19 45l-166 166q-19 19-45 19t-45-19l-742-742q-19-19-19-45t19-45l742-742q19-19 45-19t45 19l166 166q19 19 19 45t-19 45z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button type="button"
+                                class="w-full px-4 py-2 border-t border-b text-base text-indigo-500 bg-white hover:bg-gray-100 ">
+                                1
+                            </button>
+                            <button type="button"
+                                class="w-full px-4 py-2 border text-base text-gray-600 bg-white hover:bg-gray-100">
+                                2
+                            </button>
+                            <button type="button"
+                                class="w-full px-4 py-2 border-t border-b text-base text-gray-600 bg-white hover:bg-gray-100">
+                                3
+                            </button>
+                            <button type="button"
+                                class="w-full px-4 py-2 border text-base text-gray-600 bg-white hover:bg-gray-100">
+                                4
+                            </button>
+                            <button type="button"
+                                class="w-full p-4 border-t border-b border-r text-base  rounded-r-xl text-gray-600 bg-white hover:bg-gray-100">
+                                <svg width="9" fill="currentColor" height="8" class="" viewBox="0 0 1792 1792"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M1363 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="mt-20">
+    <div class="text-center">
+        <h1>All Products</h1>
+     
+
+    </div>
+    
+    <table class="border-4 border-black w-full text-center main">
+        <tr class="border-4 border-black">
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Image</th>
+        </tr>
+
+        <tr *ngFor="let i of data" class="border-4 border-black ">
+            <td>{{i.product_Id}}</td>
+            <td>{{i.product_Name}}</td>
+            <td>{{i.product_Price}}</td>
+            <td>{{i.product_Stock}}</td>
+            <td>{{i.product_Category}}</td>
+            <td>{{i.product_Description}}</td>
+            <td>{{i.product_Image}}</td>
+            <td><button class="w-full bg-yellow-400 rounded-lg ">Edit</button></td>
+            <td><button class="w-full bg-red-500 rounded-lg ">Delete</button></td>
+            
+        </tr>
+    </table>
+    <div class="text-center my-5">
+    <button type="button" class="py-4 px-6 w-fit bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full" routerLink="/addproducts">
+        Add Products
+    </button>
+    </div>
+</div>
+
+<div class="w-fit  text-center">
+    
+  
+
+</div>
+ -->
